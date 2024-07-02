@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>S O C K & S O C K 2</title>
+	<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="sock16x16.png">
+	<script type="text/javascript">
+
+  		document.addEventListener("DOMContentLoaded", function(event) {
+			var form = document.getElementById("email-form");
+			function submitForm(event) {
+				subscribeFunction();
+				event.preventDefault();
+			}
+			form.addEventListener('submit', submitForm);
+		});
+		function subscribeFunction() {
+			var page = 'sock';
+			var email = document.getElementById("email-form-email").value;
+			var element = document.getElementById("email-sub-feedback");
+			var submitButton = document.getElementById("email-form-submit");
+			if (!submitButton.disabled) {
+				submitButton.disabled = true;
+				element.innerText = '';
+				const xhttp = new XMLHttpRequest();
+				xhttp.onload = function() {
+					console.log("response, and responseText:");
+					console.log(this.response);
+					console.log(this.responseText);
+					if (this.responseText == '0') {
+						element.className = "success";
+						element.innerHTML = "Thank you for signing up! We will be sure to let you know about SOCK 2.";
+					} else {
+						element.className = "failure";
+						element.innerHTML = "Oops! SOCK server error :') Send to your administrator: " + this.responseText;
+						submitButton.disabled = false;
+					}
+				}
+				xhttp.open("GET",
+				`../join_mailing_list.php?page=${page}&email=${email}`, true);
+				xhttp.send();
+				console.log("submit away!!!");
+			}
+		}
+	</script>
+	<style>
+		html,body{padding:0; margin:0;}
+		#sock-header{background:#008000; padding: 2em 0; margin: 0;}
+		#sock-description{font-family:'Young Serif'; font-size: 10vw; padding: 0 15vw;}
+		#sock-story{background:#eee; padding: 5vw 7.5vw;
+			font-size: 2vw;
+			font-size: max(40px, 3vw);
+			font-family: Montserrat, sans-serif;
+			text-align: justify;
+		}
+		#sock-footer{font-family:'Young Serif'; font-size: 2em; padding: 0 15vw; padding-bottom: 2em;}
+		#sock-footer form input{font-size: 1em; font-family:'Young Serif'; padding: .25em .5em; border-radius: .25em; max-width: 100%; margin-bottom:.25em;}
+		#sock-footer form input::placeholder{color: #eee;}
+		#sock-footer form input.email-sub:hover{cursor: pointer; background: green;}
+		#sock-footer form input.email-sub:active{color: white;}
+		#sock-footer #email-sub-feedback {min-height: 2em;}
+		#sock-footer #email-sub-feedback.success{color: #4a5;}
+		#sock-footer #email-sub-feedback.failure{color: #f98;}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<p id="sock-header" style="text-align: center;">
+				<span style="font-size:20vw; font-family:'Young Serif';">SOCK</span><br/>
+				<span style="font-size:10vw; font-family:'Young Serif'; line-height:0;"><i>New: SOCK 2!</i></span><br/>
+		</p>
+	</div>
+	<img src="SOCK(OPP).jpg" / width="100%"><br/>
+	<div id="sock-description">
+		<p style="margin-left:-1em;"><span style="text-decoration:line-through">One* sock</span><br/>Now two socks!</p>
+		<p style="margin-left:0em;">100% Non-Mulesed Wool</p>
+		<p style="margin-left:1em;">Handmade in Canada</p>
+	</div>
+	<div id ="sock-story">
+		<u>The story behind the sock</u><br/>
+		<br/>
+		The world didn't need ano&shy;ther sock, but SOCK's founder &mdash; Shelley She &mdash; started knit&shy;ting one any&shy;way. In a once-in-a-cen&shy;tury moment of moti&shy;vation, she sought out the sup&shy;plies and videos she'd need for the dev&shy;elop&shy;ment of SOCK. Now, her crea&shy;tion is finally here.<br/>
+		<br/>
+		<span style="color:#f0f;">NEW! We were un&shy;satis&shy;fied with the singul&shy;ar&shy;ly indiv&shy;idual SOCK. Now pre&shy;sent&shy;ing: SOCK 2!</span><br/>
+		<br/>
+		<img src="SOCK(WITHYARN).jpg" / width="100%"><br/>
+		<br/>
+		SOCK <span style="color:#f0f;">& SOCK 2</span>
+	</div>
+	<div id="sock-footer">
+		<p>*You thought we'd be satisfied with just one sock? NO WAY!</p>
+		<p>Join our mailing list below to be the FIRST to hear about SOCK 2. Don't miss out!</p>
+		<form id="email-form">
+			<input type="email" placeholder="your email" id="email-form-email" />
+			<input type="submit" class="email-sub" id="email-form-submit" value="Yes, I want to hear about SOCK 2!" />
+			<div id="email-sub-feedback"></div>
+		</form>
+	</div>
+<!-- 	<p>Welcome to my sock website!</p>
+	<p>This is [not yet] a photograph of a sock Shelley knitted by hand.</p> -->
+	<div id="header">
+		<p id="sock-header" style="text-align: center; color: #fff; background: #000">
+				<span style="font-size:20vw; font-family:'Young Serif';">SOCK</span><br/>
+		</p>
+	</div>
+</body>
+</html>
