@@ -7,11 +7,25 @@
 		<style>
 			html,body{padding:0; margin:0;}
 			body{font-family:'Young Serif'; font-size: 2em; background-color: white; }
-			img#sock3{
+			img.sock3{
 				position: absolute;
 				width: auto; height: 75vh;
 				left: 20vw;
 				top: 5vh;
+				backface-visibility: hidden;
+			}
+			.flippable {
+				backface-visibility: hidden;
+				transition: transform 1s;
+			}
+			.preflipped {
+				transform: perspective(800px) rotateY(-179deg);
+			}
+			.unflipped {
+				transform: perspective(800px) rotateY(0deg);
+			}
+			.postflipped {
+				transform: perspective(800px) rotateY(179deg);
 			}
 			div.halfscreen{
 				height:50vh;
@@ -43,13 +57,30 @@
 
 	<body>
 		<div class="semifullscreen">
-			<img src="grey_sock.jpg" id="sock3" class="stamp" style="left:20%; top:5%; height: 75%;">
-			<div class="words stamp" style="right: 30%; bottom: 15%;">
+			<img src="grey_sock.jpg" class="sock3 stamp flippable unflipped" style="left:20%; top:5%; height: 75%;">
+			<img src="grey_socks.jpg" class="sock3 stamp flippable preflipped" style="left:20%; top:5%; height: 75%;">
+			<div class="words stamp flippable unflipped" style="right: 30%; bottom: 15%;">
 				A completely<br/>redesigned<br/><strong><nobr>SOCK 3</nobr>!</strong>
+			</div>
+			<div class="words stamp flippable preflipped" style="right: 30%; bottom: 15%;">
+				Wait...<br/>holy shit,<br/>it's <strong><nobr>SOCK 3 & 4</nobr>!</strong>
 			</div>
 			<div class="words stamp" style="right: 3%; bottom: 2%;">
 				Let's take a look, shall we?
 			</div>
+			<script>
+				window.setTimeout(() => {
+					console.log("FLIP!");
+					document.querySelectorAll(".unflipped").forEach(element => {
+						element.classList.remove("unflipped");
+						element.classList.add("postflipped");
+					});
+					document.querySelectorAll(".preflipped").forEach(element => {
+						element.classList.remove("preflipped");
+						element.classList.add("unflipped");
+					});
+				}, 1000);
+			</script>
 		</div>
 		<div>
 			<div style="margin: 0 5% 0 20%; padding: .5em; background-color: #ffe;">
@@ -61,14 +92,20 @@
 			</div>
 		</div>
 		<div class="semifullscreen">
-			<img src="grey_sock.jpg" id="sock3" class="stamp" style="left:45%; top:5%; height: 75%; transform: rotate(-12deg);">
+			<img src="grey_sock.jpg" id="sock3" class="stamp" style="right:10%; top:5%; height: 75%; transform: rotate(-12deg);">
 			<div class="words stamp" style="left: 40%; top: 5%;">S O C K   3</div>
-			<div class="words stamp" style="left: 70%; bottom: 30%;">wow</div>
-			<div class="words stamp" style="left: 66%; bottom: 18%;">it's one sock</div>
+			<div class="words stamp" style="left: 10%; bottom: 30%;">wow</div>
+			<div class="words stamp" style="right: 10%; bottom: 18%;">it's one sock</div>
+		</div>
+		<div class="semifullscreen">
+			<img src="grey_sock.jpg" id="sock3" class="stamp" style="left: 10%; top:5%; height: 75%; transform: rotate(12deg);">
+			<div class="words stamp" style="left: 20%; top: 5%;">S O C K   4</div>
+			<div class="words stamp" style="right: 10%; bottom: 30%;">wowow</div>
+			<div class="words stamp" style="left: 10%; bottom: 18%;">it's the other sock</div>
 		</div>
 		<div>
 			<div style="margin: 0 20% 0 5%; padding: .5em; background-color: #dfe;">
-				Unlike S O C K & S O C K 2 which had their own totally unique material makeup, <nobr>S O C K 3</nobr> is composed of 55% Merino wool and 45% cotton. It weighs a luscious 44 grams. The foot length is an astonishing 9" unstretched, and when stretched, you would not believe it, but it truly reaches 10". ... in length. of the, the foot part. the foot length.
+				Unlike S O C K & S O C K 2 which had their own totally unique material makeup, <nobr>S O C K 3</nobr> <strong>(and now <nobr>S O C K 4!</nobr>)</strong> is composed of 55% Merino wool and 45% cotton. It weighs a luscious 44 grams. The foot length is an astonishing 9" unstretched, and when stretched, you would not believe it, but it truly reaches 10". ... in length. of the, the foot part. the foot length.
 			</div>
 		</div>
 		<div style="position: relative; padding: 2em 0;">
@@ -79,8 +116,11 @@
 			<div class="words stamp" style="left: 5%; bottom: .5em;">sock</div>
 		</div>
 		<div style="position: relative; padding: 2em 0;">
-			<div style="margin: 0 25% 0 9%; padding: .5em; background-color: #fcc;">
-				Finally, we have a very special surprise for all fans of S O C K. You (yes, you) can purchase <nobr>S O C K 3</nobr> for the low low cost of materials and labour, which amounts to $42.49CAD plus cost of shipping (~$12) and a little markup for payment provider fees. A steal! Where else can you purchase a sock at this <em>delectably</em> reasonable price???
+			<div style="margin: 0 25% 0 9%; padding: .5em; background-color: #fcc; opacity: 0.5; filter: blur(2px);">
+				<span style="text-decoration:line-through;">Finally, we have a very special surprise for all fans of S O C K. You (yes, you) can purchase <nobr>S O C K 3</nobr> for the low low cost of materials and labour, which amounts to $42.49CAD plus cost of shipping (~$12) and a little markup for payment provider fees. A steal! Where else can you purchase a sock at this <em>delectably</em> reasonable price???</span>
+			</div>
+			<div class="words stamp" style="left: 12%; right:29%; bottom:3em; background-color: #fcc;">
+				Complete SOCK 3 & 4 PAIR on sale for $80, free shipping for our very first <nobr>S O C K</nobr> buyer! <a href='https://ko-fi.com/SHEmade1/shop'>Buy now!</a> Free shipping!!! Where else can you purchase a sock at this <em>delectably</em> reasonable price?
 			</div>
 			<div class="words stamp" style="right:0%; bottom:3em;">what a steal!</div>
 			<div class="words stamp" style="right: 12%; bottom: 0em;">only {sock:money_amount}!</div>
@@ -89,13 +129,21 @@
 			<div style="margin: 0 2% 0 49%; padding: .5em; background-color: #ccc;">
 				<span style="text-decoration:line-through;">Please direct all serious inquiries to droqen & Shelley at droqen+shelley@gmail.com</span>
 			</div>
-			<div class="words stamp" style="left:19%; bottom:.2em;"><span style="text-decoration:line-through;">serious inquiries</span></div>
+			<div class="words stamp" style="left:25%; bottom:.2em;"><span style="text-decoration:line-through;">serious inquiries</span></div>
 		</div>
 		<div style="position: relative; padding: 2em 0;">
-			<div style="margin: 0 2% 0 49%; padding: .5em; background-color: #ccc;">
-				UPDATE: After submitting the official S O C K 3 website for review, I can attest that Shelley spoke these exact words: <span class="voice-of-shelley">"I don't want inquiries, don't ask me"</span>. I will field all serious inquiries at droqen@gmail.com (no shell)
+			<div style="margin: 0 7% 0 44%; padding: .5em; background-color: #ccc;">
+				<span style="text-decoration:line-through;">UPDATE: After submitting the official S O C K 3 website for review, I can attest that Shelley spoke these exact words:</span> <span class="voice-of-shelley" style="text-decoration: line-through;">"I don't want inquiries, don't ask me"</span><span style="text-decoration:line-through;">. I will field all serious inquiries at droqen@gmail.com (no shell)</span>
 			</div>
-			<div class="words stamp" style="left:19%; bottom:.2em;">no inquiries, don't ask!</div>
+			<div class="words stamp" style="left:16.5%; bottom:.2em;"><span style="text-decoration:line-through;">no inquiries, don't ask!</span></div>
+		</div>
+		<div style="position: relative; padding: 2em 0; margin-bottom: 7em;">
+			<div style="margin: 0 11% 0 42%; padding: .5em; background-color: #ccc;">
+				UPDATE 2: Finally, what all you sock fans have been waiting your whole lives for: a storefront with an order form! Never speak to a human again! Order SOCK 3 & 4 (as well as newly-stitched 5 & 6) <a href='https://ko-fi.com/SHEmade1/shop'>here on the official S O C K S T O R E</a>, or <a href='https://instagram.com/SHEmade1.log'>follow the socks on instagram!</a></span>
+			</div>
+			<div class="words stamp" style="left:9%; bottom:0.4em;">no human interaction<br/>AT ALL, GUARANTEED</div>
+			<div class="words stamp" style="right:19%; bottom:-1.4em;">only social media</div>
+			<div class="words stamp" style="right:40%; bottom:-7em; transform: rotate(7.5deg);">NEW DEAL! free shipping<br/>for the first buyer! <a href='https://ko-fi.com/SHEmade1/shop'>be the first!</a></div>
 		</div>
 		
 		<!-- <div id="sock-header" style="text-align: left; color: #fff; background: #000">
