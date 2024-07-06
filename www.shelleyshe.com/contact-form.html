@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--<link rel="icon" href="svgs/shell_snail_circle.svg" type="image/svg+xml">-->
+	<link rel="alternate icon" href="img/shell_snail_zoom.png" type="image/png">
+	<title>Shelley She - Contact Form</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.hidden {
+			display: none;
+		}
+	</style>
+	<script>
+		function submitContactForm() {
+			let sender = document.getElementById("contact-sender").value;
+			let subj = document.getElementById("contact-subject").value;
+			let body = document.getElementById("contact-body").value;
+			if (sender == "") {
+				submitError("No email address provided");
+			}
+			else if (subj == "") {
+				submitError("No subject line provided");
+			}
+			else if (body == "") {
+				submitError("No message body provided");
+			} else {
+				// all good!
+				const xhttp = new XMLHttpRequest();
+				xhttp.onload = function () {
+					if (this.responseText == "1") {
+						// success!
+						document.getElementById("contact-form").className = "hidden";
+						document.getElementById("contact-success").className = "";
+					} else {
+						submitError("Problem sending: " + this.responseText);
+					}
+				}
+				xhttp.open("GET", "contact-ajax.php?sender=" + sender + "&subject=" + subj + "&body=" + body, true);
+				xhttp.send();
+			}
+		}
+		function submitError(errorMessage) {
+			document.getElementById("contact-error").innerText = errorMessage;
+		}
+	</script>
+</head>
+
+<body>
+	<p style="width:400px; text-align: justify;">
+		<a href="index.html"><img src="svgs/shell-snail.svg" alt="shell snail logo" width="256" /></a><br /><br />
+		If you'd like to contact me about a commission or anything else, this is where to do it.
+	</p>
+
+	<h2>Contact Form</h2>
+	<form id="contact-form" action="javascript:submitContactForm()">
+		Your email address:<br />
+		<input id="contact-sender" type="text" style="width:400px;"><br /><br />
+
+		Subject:<br />
+		<input id="contact-subject" type="text" style="width:400px;"><br /><br />
+
+		Body:<br />
+		<textarea id="contact-body" style="width:402px; height:6.5em;"></textarea><br /><br />
+
+		<input type="submit" value="Send message to Shelley">
+
+		<h2 id="contact-error" style="width:400px; color:#d45455;">
+			</div>
+	</form>
+	<h2 id="contact-success" class="hidden" style="color: #a4d485;">Message sent!</h2>
+</body>
+
+</html>

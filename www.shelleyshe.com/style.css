@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@250&family=Raleway:wght@300&display=swap');
+
+html,
+body {
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 25px;
+}
+
+/*#434B57*/
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+form {
+	margin-left: 80px;
+	margin-right: 20px;
+}
+
+h1,
+h2,
+h3 {
+	margin-top: 3em;
+}
+
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	letter-spacing: 4px;
+	font-size: 1.25em;
+}
+
+textarea {
+	min-width: 402px;
+	width: 400px;
+}
+
+div.hori {
+	position: relative;
+	overflow-y: hidden;
+	overflow-x: auto;
+	margin-bottom: 20px;
+	white-space: nowrap;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.horifade.right {
+	position: fixed;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.horifade.left {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+	background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.horifade {
+	pointer-events: none;
+}
+
+div.hori img {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px, inset rgba(0, 0, 0, 0.2) 0px -1px 2px;
+	border-radius: 20px;
+}
+
+span.imagepad {
+	margin: 20px;
+}
+
+.svgicon_link {
+	display: inline-block;
+	height: 2em;
+	line-height: 2em;
+	padding-bottom: .5em;
+}
+
+.svgicon_link span.s {
+	background: black;
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+	border-radius: 1em;
+	margin-right: .5em;
+}
+
+.svgicon_link span.s img {
+	width: 2em;
+}
+
+.svgicon_link span.s {
+	vertical-align: middle;
+}
+
+.svgicon_link,
+.svgicon_link span.s {
+	transition: transform 0.1s ease-out;
+}
+
+a:link .svgicon_link {
+	text-decoration: none;
+}
+
+a:link .svgicon_link,
+a:visited .svgicon_link {
+	color: #3aa;
+}
+
+a:hover .svgicon_link {
+	color: pink;
+}
+
+a:active .svgicon_link {
+	color: red;
+}
+
+a:hover .svgicon_link span.s {
+	background: pink;
+}
+
+a:active .svgicon_link span.s {
+	background: red;
+	transform: rotate(35deg);
+}
+
+.nsfw {
+	position: relative;
+}
+
+.nsfw img {
+	filter: blur(10px);
+	transition: filter 0.125s ease-in-out;
+}
+
+.nsfw:hover img {
+	filter: blur(0px);
+}
+
+.nsfw .caption {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	left: 0px;
+	top: -230px;
+	width: 100%;
+	text-align: center;
+	z-index: 3;
+	transition: display 0.125s ease-in-out;
+	font-size: 125%;
+	color: #666;
+}
+
+.nsfw:hover .caption {
+	display: none;
+}
